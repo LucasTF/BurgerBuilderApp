@@ -1,0 +1,39 @@
+span.order-summary{
+    text-transform: capitalize;
+}
+
+.btn-div{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.button {
+    background-color: transparent;
+    border-radius: 3px;
+    border: 1px solid;
+    padding: 8px;
+    margin-left: 8px;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    font-weight: bold;
+}
+
+.button.btn-success {
+    background-color: #5C9210;
+    border-color: rgb(60, 98, 7);
+}
+
+.button.btn-success:hover{
+    background-color: rgb(119, 189, 20);
+}
+
+.button.btn-danger {
+    background-color: #c63636;
+    border-color: #a72b2b;
+}
+
+.button.btn-danger:hover{
+    background-color: #e11d1d;
+}

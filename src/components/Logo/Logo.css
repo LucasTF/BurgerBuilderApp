@@ -1,0 +1,31 @@
+.logo {
+    height: 100%;
+    margin-right: 3rem;
+    color: #CF8F2E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img{
+    height: 75%;
+    margin: 0;
+    background-color: #DAA972;
+    border-radius: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.logo p{
+    margin-left: 5px;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+@media(max-width: 499px){
+    .logo{
+        height: 10%;
+        margin: 0;
+        justify-content: left;
+    }
+}
