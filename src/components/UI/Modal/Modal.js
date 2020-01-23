@@ -1,20 +1,26 @@
-import React from 'react';
-import Auxiliary from '../../../hoc/Auxiliary';
+import React, {Component, Fragment} from 'react';
 import Backdrop from '../Backdrop/Backdrop';
 
 import './Modal.css';
 
 
-const Modal = props => {
-    let style = props.show ? "modal purchase-true" : "modal purchase-false";
-    return (
-        <Auxiliary>
-            <Backdrop show={props.show} clicked={props.modalClosed} />
-            <div className={style}>
-                {props.children}
-            </div>
-        </Auxiliary>
-    );
+class Modal extends Component {
+
+    shouldComponentUpdate(nextProps, nextState){
+        return nextProps.show !== this.props.show;
+    }
+
+    render(){
+        let style = this.props.show ? "modal purchase-true" : "modal purchase-false";
+        return (
+            <Fragment>
+                <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
+                <div className={style}>
+                    {this.props.children}
+                </div>
+            </Fragment>
+        );
+    }
 }
 
 export default Modal;
