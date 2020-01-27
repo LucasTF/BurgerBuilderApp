@@ -7,14 +7,14 @@ import './Modal.css';
 class Modal extends Component {
 
     shouldComponentUpdate(nextProps, nextState){
-        return nextProps.show !== this.props.show;
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
     }
 
     render(){
         let style = this.props.show ? "modal purchase-true" : "modal purchase-false";
         return (
             <Fragment>
-                <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
+                <Backdrop show={this.props.show} modalClosed={this.props.modalClosed} />
                 <div className={style}>
                     {this.props.children}
                 </div>
