@@ -14,7 +14,7 @@ class Modal extends Component {
         let style = this.props.show ? "modal purchase-true" : "modal purchase-false";
         return (
             <Fragment>
-                <Backdrop show={this.props.show} modalClosed={this.props.modalClosed} />
+                <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
                 <div className={style}>
                     {this.props.children}
                 </div>
