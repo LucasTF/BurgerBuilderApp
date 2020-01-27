@@ -26,7 +26,7 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount() {
-        Axios.get('/ingredients').then(res => {
+        Axios.get('/ingredients.json').then(res => {
             this.setState({ingredients: res.data});
         }).catch(err => {
             console.error('Couldn\'t load information from server.');
