@@ -1,5 +1,7 @@
 import React, {Component, Fragment} from 'react';
 
+import Button from '../../UI/Button/Button';
+
 import './OrderSummary.css';
 
 class OrderSummary extends Component {
@@ -22,8 +24,8 @@ class OrderSummary extends Component {
                 <p>Total Price: <strong>${this.props.totalPrice.toFixed(2)}</strong></p>
                 <p>Continue to Check Out?</p>
                 <div className="btn-div">
-                    <button onClick={this.props.purchaseCanceled} className="button btn-danger">Cancel</button>
-                    <button onClick={this.props.purchaseContinued} className="button btn-success">Continue</button>
+                    <Button click={this.props.purchaseCanceled} type='danger'>Cancel</Button>
+                    <Button click={this.props.purchaseContinued} type='success'>Continue</Button>
                 </div>
             </Fragment>
         )
