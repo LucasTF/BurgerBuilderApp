@@ -12,8 +12,8 @@ const Summary = props => {
             <div className='burger'>
                 <Burger ingredients={props.ingredients} />
             </div>
-            <Button click={null} type='danger'>Cancel</Button>
-            <Button click={null} type='success'>Continue</Button>
+            <Button click={props.checkoutCancelled} type='danger'>Cancel</Button>
+            <Button click={props.checkoutContinued} type='success'>Continue</Button>
         </div>
     );
 }

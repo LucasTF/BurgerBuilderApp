@@ -4,12 +4,14 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Checkout from './containers/Checkout/Checkout';
+import Contact from './containers/Checkout/Contact/Contact';
 
 function App() {
   return (
     <BrowserRouter>
       <Layout>
         <Switch>
+          <Route path='/contact' component={Contact} />
           <Route path='/checkout' component={Checkout} />
           <Route path='/' component={BurgerBuilder} />
         </Switch>

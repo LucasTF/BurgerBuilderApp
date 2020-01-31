@@ -1,0 +1,44 @@
+.contact {
+    margin: auto;
+    padding: 0.5rem;
+    background: #CF8F2E;
+    text-align: center;
+}
+
+.contact form{
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+}
+
+.contact form label{
+    margin: 0.2rem -0.5rem;
+    padding: 0.5rem;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+}
+
+.contact form input{
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border-style: solid;
+    border-color: #703b09;
+    background: #703b09ac;
+    color: white;
+}
+
+.contact form button{
+    margin: 1rem auto 0.5rem auto;
+}
+
+@media(min-width: 500px){
+
+    .contact form label{
+        margin: 0.2rem 9.5rem;
+    }
+    .contact form input{
+        margin: 0 10rem;
+        padding: 0.5rem;
+    }
+}
