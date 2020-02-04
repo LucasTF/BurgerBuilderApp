@@ -1,17 +1,17 @@
-.contact {
-    margin: auto;
+.checkout-info {
     padding: 0.5rem;
     background: #CF8F2E;
     text-align: center;
+    box-sizing: border-box;
 }
 
-.contact form{
+.checkout-info form{
     display: flex;
     flex-flow: column;
     align-items: stretch;
 }
 
-.contact form label{
+.checkout-info form label{
     margin: 0.2rem -0.5rem;
     padding: 0.5rem;
     font-weight: bold;
@@ -19,8 +19,7 @@
     text-align: left;
 }
 
-.contact form input,
-.contact form textarea{
+.checkout-info form input{
     padding: 0.5rem;
     border-radius: 0.5rem;
     border-style: solid;
@@ -29,23 +28,26 @@
     color: white;
 }
 
-.contact form button{
+.checkout-info form button{
     margin: 1rem auto 0.5rem auto;
 }
 
 @media(min-width: 500px){
 
-    .contact form label{
-        margin: 0.2rem 9.5rem;
+    .checkout-info{
+        width: 40%;
     }
 
-    .contact form label:first-child{
-        margin: 0 9.5rem 0.2rem 9.5rem;
+    .checkout-info form label{
+        margin: 0.2rem 2rem;
     }
 
-    .contact form input,
-    .contact form textarea{
-        margin: 0 10rem;
+    .checkout-info form label:first-child{
+        margin: 0 2rem 0.2rem 2rem;
+    }
+
+    .checkout-info form input{
+        margin: 0 2rem;
         padding: 0.5rem;
     }
 }

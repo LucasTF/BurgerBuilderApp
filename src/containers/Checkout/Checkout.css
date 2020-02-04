@@ -1,0 +1,13 @@
+.checkout {
+    display: block;
+}
+
+@media(min-width: 500px){
+    .checkout {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-around;
+        height: 94vh;
+        width: 100%;
+    }
+}

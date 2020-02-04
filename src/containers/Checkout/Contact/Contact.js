@@ -22,7 +22,7 @@ class Checkout extends Component{
                     <label>Email:</label>
                     <input type='email' name='email' placeholder='Email' />
                     <label>Message:</label>
-                    <input type='text' name='message' placeholder='Your message' />
+                    <textarea type='text' name='message' placeholder='Your message' />
                     <Button type='success'>Send message</Button>
                 </form>
             </div>
