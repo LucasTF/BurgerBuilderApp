@@ -1,0 +1,10 @@
+.orders {
+    padding: 1rem;
+}
+
+.orders span {
+    text-transform: capitalize;
+    display: block;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
