@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Axios from '../../utils/Axios';
+import Input from '../../components/UI/Input/Input';
 
 import './CheckoutInfo.css';
 
@@ -39,7 +40,7 @@ class CheckoutInfo extends Component {
     }
 
     render(){
-        let form = (
+        /*let form = (
             <form>
                 <label>Name:</label>
                 <input type='text' name='name' placeholder='Name' />
@@ -49,6 +50,16 @@ class CheckoutInfo extends Component {
                 <input type='text' name='street' placeholder='Street address' />
                 <label>CEP:</label>
                 <input type='text' name='cep' placeholder='CEP' />
+                <Button type='success' click={this.orderHandler} >Finish order</Button>
+                <Button type='danger' click={this.props.cancelOrder} >Cancel</Button>
+            </form>
+        );*/
+        let form = (
+            <form>
+                <Input type='text' name='name' placeholder='Name' label='Name:' />
+                <Input type='text' name='email' placeholder='Email' label='Email:' />
+                <Input type='text' name='street' placeholder='Street' label='Street:' />
+                <Input type='text' name='cep' placeholder='CEP' label='CEP:' />
                 <Button type='success' click={this.orderHandler} >Finish order</Button>
                 <Button type='danger' click={this.props.cancelOrder} >Cancel</Button>
             </form>

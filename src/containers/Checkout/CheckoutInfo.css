@@ -1,4 +1,5 @@
 .checkout-info {
+    width: auto;
     padding: 0.5rem;
     background: #CF8F2E;
     text-align: center;
@@ -11,43 +12,13 @@
     align-items: stretch;
 }
 
-.checkout-info form label{
-    margin: 0.2rem -0.5rem;
-    padding: 0.5rem;
-    font-weight: bold;
-    color: white;
-    text-align: left;
-}
-
-.checkout-info form input{
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    border-style: solid;
-    border-color: #703b09;
-    background: #703b09ac;
-    color: white;
-}
-
 .checkout-info form button{
+    display: inline;
     margin: 1rem auto 0.5rem auto;
 }
 
 @media(min-width: 500px){
-
-    .checkout-info{
-        width: 40%;
-    }
-
-    .checkout-info form label{
-        margin: 0.2rem 2rem;
-    }
-
-    .checkout-info form label:first-child{
-        margin: 0 2rem 0.2rem 2rem;
-    }
-
-    .checkout-info form input{
-        margin: 0 2rem;
-        padding: 0.5rem;
+    .checkout-info {
+        width: 25%;
     }
 }
