@@ -9,11 +9,61 @@ import './CheckoutInfo.css';
 class CheckoutInfo extends Component {
 
     state = {
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            cep: ''
+        orderForm: {
+            name: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    label: 'Name:',
+                    placeholder: 'Name'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    valid: false
+                }
+            },
+            email: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'email',
+                    label: 'Email:',
+                    placeholder: 'Email'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    valid: false
+                }
+            },
+            street: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    label: 'Street:',
+                    placeholder: 'Street'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    valid: false
+                }
+            },
+            cep: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'number',
+                    label: 'CEP:',
+                    placeholder: 'CEP'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                    minLength: 8,
+                    maxLength: 8,
+                    valid: false
+                }
+            },
         },
         loading: false
     }
@@ -21,13 +71,14 @@ class CheckoutInfo extends Component {
     orderHandler = (event) => {
         event.preventDefault();
         this.setState({loading: true});
+        const formData = {};
+        for (const formElement in this.state.orderForm) {
+            formData[formElement] = this.state.orderForm[formElement].value;
+        }
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.totalPrice,
-            customer: {
-                name: 'Lucas',
-                email: 'lucas@email.com'
-            }
+            orderData: formData
         }
         Axios.post('/orders.json', order).then(res => {
             this.setState({loading: false});
@@ -39,27 +90,47 @@ class CheckoutInfo extends Component {
         });
     }
 
+    inputChangedHandler = (event, id) => {
+        const updatedOrderForm = { ...this.state.orderForm };
+        const updatedElement = { ...updatedOrderForm[id] };
+        updatedElement.value = event.target.value;
+        updatedElement.validation.valid = this.validationHandler(updatedElement.value, updatedElement.validation);
+        updatedOrderForm[id] = updatedElement;
+        console.log(updatedElement.validation);
+        this.setState({orderForm : updatedOrderForm});
+    }
+
+    validationHandler = (value, rules) => {
+        let isValid = true;
+
+        if(rules.required) isValid = value.trim() !== '';
+        if(isValid && rules.minLength) isValid = value.length >= rules.minLength;
+        if(isValid && rules.maxLength) isValid = value.length <= rules.maxLength;
+
+        return isValid;
+    }
+
     render(){
-        /*let form = (
-            <form>
-                <label>Name:</label>
-                <input type='text' name='name' placeholder='Name' />
-                <label>Email:</label>
-                <input type='email' name='email' placeholder='Email' />
-                <label>Street:</label>
-                <input type='text' name='street' placeholder='Street address' />
-                <label>CEP:</label>
-                <input type='text' name='cep' placeholder='CEP' />
-                <Button type='success' click={this.orderHandler} >Finish order</Button>
-                <Button type='danger' click={this.props.cancelOrder} >Cancel</Button>
-            </form>
-        );*/
+        const elementsArray = [];
+        for (const key in this.state.orderForm) {
+            elementsArray.push({
+                id: key,
+                config: this.state.orderForm[key]
+            });
+        }
         let form = (
             <form>
-                <Input type='text' name='name' placeholder='Name' label='Name:' />
-                <Input type='text' name='email' placeholder='Email' label='Email:' />
-                <Input type='text' name='street' placeholder='Street' label='Street:' />
-                <Input type='text' name='cep' placeholder='CEP' label='CEP:' />
+                {elementsArray.map(element => (
+                    <Input
+                    key={element.id}
+                    type={element.config.elementType}
+                    name={element.id}
+                    placeholder={element.config.elementConfig.placeholder}
+                    label={element.config.elementConfig.label}
+                    value={element.config.value}
+                    onChange={(event) => this.inputChangedHandler(event, element.id)}
+                    />
+                ))}
                 <Button type='success' click={this.orderHandler} >Finish order</Button>
                 <Button type='danger' click={this.props.cancelOrder} >Cancel</Button>
             </form>

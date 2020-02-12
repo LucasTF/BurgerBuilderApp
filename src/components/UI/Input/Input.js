@@ -4,23 +4,23 @@ import './Input.css';
 
 const Input = props => {
 
-    let inputElement = null;
+    let element = null;
 
-    switch(props.inputType) {
+    switch(props.elementType) {
         case('input'):
-            inputElement = <input className='input-element' {...props} />
+            element = <input className='input-element' {...props} />
             break;
         case('textarea'):
-            inputElement = <textarea className='input-element' {...props} />
+            element = <textarea className='input-element' {...props} />
             break;
         default:
-            inputElement = <input className='input-element' {...props} />;
+            element = <input className='input-element' {...props} />;
     }
 
     return(
         <div className='input' >
             <label className='label' >{props.label}</label>
-            {inputElement}
+            {element}
         </div>
     );
 }
