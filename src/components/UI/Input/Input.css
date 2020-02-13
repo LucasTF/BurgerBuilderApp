@@ -24,7 +24,19 @@
     width: 95%;
 }
 
+.input-element.invalid {
+    border-color: red;
+    background: #700909ac;
+}
+
 .input-element:focus{
     outline: none;
     background: #ac6c30e7;
+}
+
+p{
+    margin: 0 0;
+    padding: 5px 0 0 0;
+    color: white;
+    text-align: left;
 }

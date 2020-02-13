@@ -20,8 +20,10 @@ class CheckoutInfo extends Component {
                 value: '',
                 validation: {
                     required: true,
+                    invalidMessage: 'This field cannot be empty.',
                     valid: false
-                }
+                },
+                touched: false
             },
             email: {
                 elementType: 'input',
@@ -33,8 +35,10 @@ class CheckoutInfo extends Component {
                 value: '',
                 validation: {
                     required: true,
+                    invalidMessage: 'This field cannot be empty.',
                     valid: false
-                }
+                },
+                touched: false
             },
             street: {
                 elementType: 'input',
@@ -46,8 +50,10 @@ class CheckoutInfo extends Component {
                 value: '',
                 validation: {
                     required: true,
+                    invalidMessage: 'This field cannot be empty.',
                     valid: false
-                }
+                },
+                touched: false
             },
             cep: {
                 elementType: 'input',
@@ -59,12 +65,15 @@ class CheckoutInfo extends Component {
                 value: '',
                 validation: {
                     required: true,
+                    invalidMessage: 'This field cannot be empty, must only contain numbers and must have 8 characters.',
                     minLength: 8,
                     maxLength: 8,
                     valid: false
-                }
+                },
+                touched: false
             },
         },
+        formIsValid: false,
         loading: false
     }
 
@@ -95,9 +104,14 @@ class CheckoutInfo extends Component {
         const updatedElement = { ...updatedOrderForm[id] };
         updatedElement.value = event.target.value;
         updatedElement.validation.valid = this.validationHandler(updatedElement.value, updatedElement.validation);
+        updatedElement.touched = true;
         updatedOrderForm[id] = updatedElement;
-        console.log(updatedElement.validation);
-        this.setState({orderForm : updatedOrderForm});
+
+        let formIsValid = true;
+        for (const element in updatedOrderForm) {
+            if(updatedOrderForm[element].validation) formIsValid = updatedOrderForm[element].validation.valid && formIsValid === true;
+        }
+        this.setState({orderForm : updatedOrderForm, formIsValid: formIsValid});
     }
 
     validationHandler = (value, rules) => {
@@ -128,10 +142,14 @@ class CheckoutInfo extends Component {
                     placeholder={element.config.elementConfig.placeholder}
                     label={element.config.elementConfig.label}
                     value={element.config.value}
+                    invalid={!element.config.validation.valid}
+                    touched={element.config.touched}
+                    shouldValidate={element.config.validation}
+                    invalidMessage={element.config.validation.invalidMessage}
                     onChange={(event) => this.inputChangedHandler(event, element.id)}
                     />
                 ))}
-                <Button type='success' click={this.orderHandler} >Finish order</Button>
+                <Button type='success' click={this.orderHandler} disabled={!this.state.formIsValid} >Finish order</Button>
                 <Button type='danger' click={this.props.cancelOrder} >Cancel</Button>
             </form>
         );

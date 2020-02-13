@@ -20,6 +20,16 @@ button.success:hover{
     background-color: rgb(119, 189, 20);
 }
 
+button.success:disabled{
+    background-color: #7E7365;
+    border-color: #ccc;
+    cursor: not-allowed;
+}
+
+button.success:disabled:hover {
+    background-color: #AC9980;
+}
+
 button.danger {
     background-color: #c63636;
     border-color: #a72b2b;
