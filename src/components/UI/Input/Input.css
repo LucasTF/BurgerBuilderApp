@@ -29,12 +29,12 @@
     background: #700909ac;
 }
 
-.input-element:focus{
+.input-element:focus {
     outline: none;
     background: #ac6c30e7;
 }
 
-p{
+p.invalid {
     margin: 0 0;
     padding: 5px 0 0 0;
     color: white;
