@@ -8,26 +8,19 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import ErrorHandler from '../../utils/ErrorHandler';
 import Axios from '../../utils/Axios';
-import * as Action from '../../store/actions';
+import {
+    addIngredient,
+    removeIngredient,
+    initIngredients,
+} from '../../store/actions/burgerBuilder';
 
 class BurgerBuilder extends Component {
     state = {
         purchasing: false,
-        loading: false,
     };
 
     componentDidMount() {
-        // Axios.get('/ingredients.json').then(res => {
-        //     this.setState({ingredients: res.data});
-        // }).catch(err => {
-        //     console.error('Couldn\'t load information from server.');
-        //     this.setState({ingredients: {
-        //         salad: 0,
-        //         bacon: 0,
-        //         cheese: 0,
-        //         meat: 0
-        //     }});
-        // });
+        this.props.onInitIngredients();
     }
 
     updatePurchaseState = ingredients => {
@@ -61,7 +54,11 @@ class BurgerBuilder extends Component {
             disabledInfo[i] = disabledInfo[i] <= 0;
         }
         let orderSummary = null;
-        let burger = <Spinner />;
+        let burger = this.props.error ? (
+            <p>Ingredients can't be loaded.</p>
+        ) : (
+            <Spinner />
+        );
         if (this.props.ingredients) {
             burger = (
                 <Fragment>
@@ -87,9 +84,6 @@ class BurgerBuilder extends Component {
                 />
             );
         }
-        if (this.state.loading) {
-            orderSummary = <Spinner />;
-        }
         return (
             <Fragment>
                 <Modal
@@ -108,21 +102,16 @@ const mapStateToProps = state => {
     return {
         ingredients: state.ingredients,
         totalPrice: state.totalPrice,
+        error: state.error,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: ingredient =>
-            dispatch({
-                type: Action.ADD_INGREDIENT,
-                ingredientName: ingredient,
-            }),
+        onIngredientAdded: ingredient => dispatch(addIngredient(ingredient)),
         onIngredientRemoved: ingredient =>
-            dispatch({
-                type: Action.REMOVE_INGREDIENT,
-                ingredientName: ingredient,
-            }),
+            dispatch(removeIngredient(ingredient)),
+        onInitIngredients: () => dispatch(initIngredients()),
     };
 };
 
