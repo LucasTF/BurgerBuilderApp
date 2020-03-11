@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Axios from '../../utils/Axios';
+import ErrorHandler from '../../utils/ErrorHandler';
 import Input from '../../components/UI/Input/Input';
+
+import { purchaseBurger } from '../../store/actions/order';
 
 import './CheckoutInfo.css';
 
@@ -76,12 +79,10 @@ class CheckoutInfo extends Component {
             },
         },
         formIsValid: false,
-        loading: false,
     };
 
     orderHandler = event => {
         event.preventDefault();
-        this.setState({ loading: true });
         const formData = {};
         for (const formElement in this.state.orderForm) {
             formData[formElement] = this.state.orderForm[formElement].value;
@@ -91,17 +92,8 @@ class CheckoutInfo extends Component {
             price: this.props.totalPrice,
             orderData: formData,
         };
-        Axios.post('/orders.json', order)
-            .then(res => {
-                this.setState({ loading: false });
-                if (res && res.request.status === 200)
-                    alert('Pedido feito com sucesso!');
-                this.props.history.push('/');
-            })
-            .catch(err => {
-                this.setState({ loading: false });
-                console.log(err);
-            });
+
+        this.props.onOrderBurger(order);
     };
 
     inputChangedHandler = (event, id) => {
@@ -184,7 +176,7 @@ class CheckoutInfo extends Component {
                 </Button>
             </form>
         );
-        if (this.state.loading) {
+        if (this.props.loading) {
             form = <Spinner />;
         }
         return (
@@ -198,9 +190,19 @@ class CheckoutInfo extends Component {
 
 const mapStateToProps = state => {
     return {
-        ingredients: state.ingredients,
-        totalPrice: state.totalPrice,
+        ingredients: state.burgerBuilder.ingredients,
+        totalPrice: state.burgerBuilder.totalPrice,
+        loading: state.order.loading,
     };
 };
 
-export default connect(mapStateToProps)(CheckoutInfo);
+const mapDispatchToProps = dispatch => {
+    return {
+        onOrderBurger: orderData => dispatch(purchaseBurger(orderData)),
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ErrorHandler(CheckoutInfo, Axios));

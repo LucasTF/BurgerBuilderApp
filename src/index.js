@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
+import { rootReducer } from './store/reducers/reducers';
 import './index.css';
 import App from './App';
-import burgerBuilderReducer from './store/reducers/burgerBuilder';
 import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-    burgerBuilderReducer,
+    rootReducer,
     composeEnhancers(applyMiddleware(thunk))
 );
 
