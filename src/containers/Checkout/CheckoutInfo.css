@@ -1,23 +1,23 @@
 .checkout-info {
-    width: auto;
-    padding: 0.5rem;
-    background: #CF8F2E;
-    text-align: center;
-    box-sizing: border-box;
+	width: auto;
+	padding: 0.5rem;
+	background: #cf8f2e;
+	text-align: center;
+	box-sizing: border-box;
 }
 
-.checkout-info form{
-    display: flex;
-    flex-flow: column;
-    align-items: stretch;
+.checkout-info form {
+	display: flex;
+	flex-flow: column;
+	align-items: stretch;
 }
 
-.checkout-info form button{
-    margin: 1rem auto 0.5rem auto;
+.checkout-info form button {
+	margin: 1rem auto 0.5rem auto;
 }
 
-@media(min-width: 500px){
-    .checkout-info {
-        width: 25%;
-    }
+@media (min-width: 500px) {
+	.checkout-info {
+		width: 25%;
+	}
 }

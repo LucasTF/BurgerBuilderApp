@@ -12,7 +12,7 @@ const Sidedrawer = props => {
 	return (
 		<Fragment>
 			<Backdrop show={props.open} clicked={props.closed} />
-			<div className={sidedrawer}>
+			<div className={sidedrawer} onClick={props.closed}>
 				<Logo title='BurgerBuilder' />
 				<nav>
 					<NavItems isAuth={props.isAuth} />
