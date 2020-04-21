@@ -9,41 +9,43 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 import './Orders.css';
 
 class Orders extends Component {
-    componentDidMount = () => {
-        this.props.onFetchOrders();
-    };
+	componentDidMount = () => {
+		this.props.onFetchOrders(this.props.token, this.props.userId);
+	};
 
-    render() {
-        let orders = <Spinner />;
-        if (!this.props.loading) {
-            orders = this.props.orders.map(order => {
-                return (
-                    <Order
-                        key={order.id}
-                        ingredients={order.ingredients}
-                        price={order.price}
-                    />
-                );
-            });
-        }
-        return <div className='orders'>{orders}</div>;
-    }
+	render() {
+		let orders = <Spinner />;
+		if (!this.props.loading) {
+			orders = this.props.orders.map(order => {
+				return (
+					<Order
+						key={order.id}
+						ingredients={order.ingredients}
+						price={order.price}
+					/>
+				);
+			});
+		}
+		return <div className='orders'>{orders}</div>;
+	}
 }
 
 const mapStateToProps = state => {
-    return {
-        orders: state.order.orders,
-        loading: state.order.loading,
-    };
+	return {
+		orders: state.order.orders,
+		loading: state.order.loading,
+		token: state.auth.token,
+		userId: state.auth.userId,
+	};
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        onFetchOrders: () => dispatch(fetchOrders()),
-    };
+	return {
+		onFetchOrders: (token, userId) => dispatch(fetchOrders(token, userId)),
+	};
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(ErrorHandler(Orders, Axios));
