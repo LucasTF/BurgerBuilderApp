@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
-import Toolbar from '../Navigation/Toolbar/Toolbar';
+import Toolbar from '../Navigation/Toolbar';
 import './Layout.css';
-import Sidedrawer from '../Navigation/Sidedrawer/Sidedrawer';
+import Sidedrawer from '../Navigation/Sidedrawer';
 
 class Layout extends Component {
 	state = {

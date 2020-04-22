@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Order from '../../components/Order/Order';
+import Order from '../../components/Order';
 import Axios from '../../utils/Axios';
-import ErrorHandler from '../../utils/ErrorHandler';
+import withErrorHandler from '../../utils/withErrorHandler';
 import { fetchOrders } from '../../store/actions/order';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import Spinner from '../../components/UI/Spinner';
 
 import './Orders.css';
 
@@ -48,4 +48,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(ErrorHandler(Orders, Axios));
+)(withErrorHandler(Orders, Axios));

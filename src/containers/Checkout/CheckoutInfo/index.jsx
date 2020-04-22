@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Button from '../../components/UI/Button/Button';
-import Spinner from '../../components/UI/Spinner/Spinner';
-import Axios from '../../utils/Axios';
-import ErrorHandler from '../../utils/ErrorHandler';
-import Input from '../../components/UI/Input/Input';
+import Button from '../../../components/UI/Button';
+import Spinner from '../../../components/UI/Spinner';
+import Axios from '../../../utils/Axios';
+import withErrorHandler from '../../../utils/withErrorHandler';
+import Input from '../../../components/UI/Input';
 
-import { purchaseBurger } from '../../store/actions/order';
+import { purchaseBurger } from '../../../store/actions/order';
 
-import { updateObject } from '../../utils/updateObject';
-import { validationHandler } from '../../utils/validationHandler';
+import { updateObject } from '../../../utils/updateObject';
+import { validationHandler } from '../../../utils/validationHandler';
 
 import './CheckoutInfo.css';
 
@@ -204,4 +204,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(ErrorHandler(CheckoutInfo, Axios));
+)(withErrorHandler(CheckoutInfo, Axios));

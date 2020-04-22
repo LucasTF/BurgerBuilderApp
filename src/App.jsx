@@ -2,23 +2,23 @@ import React, { useEffect, Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Layout from './components/Layout/Layout';
-import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
+import Layout from './components/Layout';
+import BurgerBuilder from './containers/BurgerBuilder';
 import Logout from './containers/Auth/Logout';
-import Spinner from './components/UI/Spinner/Spinner';
+import Spinner from './components/UI/Spinner';
 
 import { authCheckState } from './store/actions/auth';
 
 const Checkout = React.lazy(() => {
-	return import('./containers/Checkout/Checkout');
+	return import('./containers/Checkout');
 });
 
 const Orders = React.lazy(() => {
-	return import('./containers/Orders/Orders');
+	return import('./containers/Orders');
 });
 
 const Contact = React.lazy(() => {
-	return import('./containers/Checkout/Contact/Contact');
+	return import('./containers/Checkout/Contact');
 });
 
 const Auth = React.lazy(() => {
