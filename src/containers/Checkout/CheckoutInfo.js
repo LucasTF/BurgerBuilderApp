@@ -9,6 +9,8 @@ import Input from '../../components/UI/Input/Input';
 
 import { purchaseBurger } from '../../store/actions/order';
 
+import { updateObject } from '../../utils/updateObject';
+
 import './CheckoutInfo.css';
 
 class CheckoutInfo extends Component {
@@ -98,15 +100,19 @@ class CheckoutInfo extends Component {
 	};
 
 	inputChangedHandler = (event, id) => {
-		const updatedOrderForm = { ...this.state.orderForm };
-		const updatedElement = { ...updatedOrderForm[id] };
-		updatedElement.value = event.target.value;
-		updatedElement.validation.valid = this.validationHandler(
-			updatedElement.value,
-			updatedElement.validation
-		);
-		updatedElement.touched = true;
-		updatedOrderForm[id] = updatedElement;
+		const updatedElement = updateObject(this.state.orderForm[id], {
+			value: event.target.value,
+			validation: updateObject(this.state.orderForm[id].validation, {
+				valid: this.validationHandler(
+					event.target.value,
+					this.state.orderForm[id].validation
+				),
+			}),
+			touched: true,
+		});
+		const updatedOrderForm = updateObject(this.state.orderForm, {
+			[id]: updatedElement,
+		});
 
 		let formIsValid = true;
 		for (const element in updatedOrderForm) {

@@ -1,5 +1,5 @@
 import * as Action from '../actions/actionTypes';
-import { updateObject } from '../utils/utility';
+import { updateObject } from '../../utils/updateObject';
 
 const initialState = {
 	ingredients: null,

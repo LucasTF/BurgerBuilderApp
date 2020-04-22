@@ -8,6 +8,8 @@ import Spinner from '../../components/UI/Spinner/Spinner';
 
 import * as actions from '../../store/actions/auth';
 
+import { updateObject } from '../../utils/updateObject';
+
 import './styles.css';
 
 class Auth extends Component {
@@ -76,21 +78,21 @@ class Auth extends Component {
 	};
 
 	inputChangedHandler = (event, controlName) => {
-		const updatedControls = {
-			...this.state.controls,
-			[controlName]: {
-				...this.state.controls[controlName],
+		const updatedControls = updateObject(this.state.controls, {
+			[controlName]: updateObject(this.state.controls[controlName], {
 				value: event.target.value,
-				validation: {
-					...this.state.controls[controlName].validation,
-					valid: this.validationHandler(
-						event.target.value,
-						this.state.controls[controlName].validation
-					),
-				},
+				validation: updateObject(
+					this.state.controls[controlName].validation,
+					{
+						valid: this.validationHandler(
+							event.target.value,
+							this.state.controls[controlName].validation
+						),
+					}
+				),
 				touched: true,
-			},
-		};
+			}),
+		});
 		this.setState({ controls: updatedControls });
 	};
 
