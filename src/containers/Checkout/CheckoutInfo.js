@@ -10,6 +10,7 @@ import Input from '../../components/UI/Input/Input';
 import { purchaseBurger } from '../../store/actions/order';
 
 import { updateObject } from '../../utils/updateObject';
+import { validationHandler } from '../../utils/validationHandler';
 
 import './CheckoutInfo.css';
 
@@ -103,7 +104,7 @@ class CheckoutInfo extends Component {
 		const updatedElement = updateObject(this.state.orderForm[id], {
 			value: event.target.value,
 			validation: updateObject(this.state.orderForm[id].validation, {
-				valid: this.validationHandler(
+				valid: validationHandler(
 					event.target.value,
 					this.state.orderForm[id].validation
 				),
@@ -125,18 +126,6 @@ class CheckoutInfo extends Component {
 			orderForm: updatedOrderForm,
 			formIsValid: formIsValid,
 		});
-	};
-
-	validationHandler = (value, rules) => {
-		let isValid = true;
-
-		if (rules.required) isValid = value.trim() !== '';
-		if (isValid && rules.minLength)
-			isValid = value.length >= rules.minLength;
-		if (isValid && rules.maxLength)
-			isValid = value.length <= rules.maxLength;
-
-		return isValid;
 	};
 
 	render() {
