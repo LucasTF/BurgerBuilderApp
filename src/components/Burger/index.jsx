@@ -2,7 +2,7 @@ import React from 'react';
 
 import Ingredient from './Ingredients';
 
-import './Burger.css';
+import { StyledBurger } from './styles';
 
 const Burger = props => {
 	let ingredients = Object.keys(props.ingredients)
@@ -18,11 +18,13 @@ const Burger = props => {
 		ingredients = <p>Please start adding ingredients.</p>;
 	}
 	return (
-		<div className='burger'>
-			<Ingredient type='bread-top' />
-			{ingredients}
-			<Ingredient type='bread-bottom' />
-		</div>
+		<StyledBurger>
+			<div className='container'>
+				<Ingredient type='bread-top' />
+				{ingredients}
+				<Ingredient type='bread-bottom' />
+			</div>
+		</StyledBurger>
 	);
 };
 

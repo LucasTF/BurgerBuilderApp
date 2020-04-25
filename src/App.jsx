@@ -8,6 +8,7 @@ import Logout from './containers/Auth/Logout';
 import Spinner from './components/UI/Spinner';
 
 import { authCheckState } from './store/actions/auth';
+import { GlobalStyle } from './styles/global';
 
 const Checkout = React.lazy(() => {
 	return import('./containers/Checkout');
@@ -55,6 +56,7 @@ const App = props => {
 			<Layout>
 				<Suspense fallback={<Spinner />}>{routes}</Suspense>
 			</Layout>
+			<GlobalStyle />
 		</BrowserRouter>
 	);
 };

@@ -70,7 +70,6 @@ export class BurgerBuilder extends Component {
 		if (this.props.ingredients) {
 			burger = (
 				<Fragment>
-					<Burger ingredients={this.props.ingredients} />
 					<BuildControls
 						ingredientAdded={this.props.onIngredientAdded}
 						removeIngredient={this.props.onIngredientRemoved}
@@ -82,6 +81,7 @@ export class BurgerBuilder extends Component {
 						ordered={this.purchaseHandler}
 						disabled={disabledInfo}
 					/>
+					<Burger ingredients={this.props.ingredients} />
 				</Fragment>
 			);
 			orderSummary = (

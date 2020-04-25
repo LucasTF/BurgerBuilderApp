@@ -1,30 +1,63 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { FaHamburger, FaAngleDoubleRight, FaList } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
+import { FiLogIn, FiLogOut } from 'react-icons/fi';
 
-import './NavItems.css';
+import { StyledNavlist } from './styles';
 
 const NavItems = ({ isAuth }) => {
 	return (
-		<ul className='nav-items'>
+		<StyledNavlist>
+			<li className='logo'>
+				<div>
+					<FaAngleDoubleRight />
+				</div>
+			</li>
 			<li className='nav-item'>
 				<NavLink exact to='/'>
-					Builder
+					<div>
+						<FaHamburger />
+					</div>
+					<span className='link-text'>Builder</span>
 				</NavLink>
 			</li>
 			<li className='nav-item'>
-				<NavLink to='/contact'>Contact</NavLink>
+				<NavLink to='/contact'>
+					<div>
+						<MdEmail />
+					</div>
+					<span className='link-text'>Contact</span>
+				</NavLink>
 			</li>
 			<li className='nav-item'>
-				{!isAuth ? null : <NavLink to='/orders'>My Orders</NavLink>}
+				{!isAuth ? null : (
+					<NavLink to='/orders'>
+						<div>
+							<FaList />
+						</div>
+						<span className='link-text'>My Orders</span>
+					</NavLink>
+				)}
 			</li>
 			<li className='nav-item'>
 				{!isAuth ? (
-					<NavLink to='/auth'>Login</NavLink>
+					<NavLink to='/auth'>
+						<div>
+							<FiLogIn />
+						</div>
+						<span className='link-text'>Login</span>
+					</NavLink>
 				) : (
-					<NavLink to='/logout'>Logout</NavLink>
+					<NavLink to='/logout'>
+						<div>
+							<FiLogOut />
+						</div>
+						<span className='link-text'>Logout</span>
+					</NavLink>
 				)}{' '}
 			</li>
-		</ul>
+		</StyledNavlist>
 	);
 };
 

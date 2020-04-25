@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Toolbar from '../Navigation/Toolbar';
-import './Layout.css';
-import Sidedrawer from '../Navigation/Sidedrawer';
+import { StyledMain } from './styles';
+
+import Navbar from '../Navigation/Navbar';
 
 class Layout extends Component {
 	state = {
@@ -22,18 +22,13 @@ class Layout extends Component {
 
 	render() {
 		return (
-			<Fragment>
-				<Toolbar
+			<>
+				<Navbar
 					isAuth={this.props.isAuthenticated}
 					drawerToggleClicked={this.sidedrawerToggleHandler}
 				/>
-				<Sidedrawer
-					isAuth={this.props.isAuthenticated}
-					open={this.state.showSideDrawer}
-					closed={this.sidedrawerClosedHandler}
-				/>
-				<main className='content'>{this.props.children}</main>
-			</Fragment>
+				<StyledMain>{this.props.children}</StyledMain>
+			</>
 		);
 	}
 }
