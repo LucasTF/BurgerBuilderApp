@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Input.css';
+import { StyledInput } from './styles';
 
 const Input = props => {
 	let element = null;
@@ -51,11 +51,11 @@ const Input = props => {
 	}
 
 	return (
-		<div className='input'>
+		<StyledInput>
 			<label className='label'>{props.label}</label>
 			{element}
 			{invalidMessage}
-		</div>
+		</StyledInput>
 	);
 };
 

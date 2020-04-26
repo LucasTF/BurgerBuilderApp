@@ -11,7 +11,7 @@ import * as actions from '../../store/actions/auth';
 import { updateObject } from '../../utils/updateObject';
 import { validationHandler } from '../../utils/validationHandler';
 
-import './styles.css';
+import { StyledAuth } from './styles';
 
 class Auth extends Component {
 	state = {
@@ -139,19 +139,27 @@ class Auth extends Component {
 		}
 
 		return (
-			<div className='login-form'>
-				{authRedirect}
-				{errorMessage}
-				<form onSubmit={event => this.submitHandler(event)}>
-					{form}
-					<Button type='success'>Submit</Button>
-				</form>
-				<Button type='danger' click={this.switchAuthMode}>
-					{this.state.isSignIn
-						? 'Create an account'
-						: 'Already have an account? Sign in'}
-				</Button>
-			</div>
+			<StyledAuth>
+				<div className='container'>
+					{this.props.loading ? (
+						form
+					) : (
+						<>
+							{authRedirect}
+							{errorMessage}
+							<form onSubmit={event => this.submitHandler(event)}>
+								{form}
+								<Button type='success'>Submit</Button>
+							</form>
+							<Button type='info' click={this.switchAuthMode}>
+								{this.state.isSignIn
+									? 'Create an account'
+									: 'Already have an account? Sign in'}
+							</Button>
+						</>
+					)}
+				</div>
+			</StyledAuth>
 		);
 	}
 }

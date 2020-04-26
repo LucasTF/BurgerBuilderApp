@@ -1,13 +1,17 @@
 import React from 'react';
 
-import './Button.css';
+import { StyledButton } from './styles';
 
 const Button = props => {
-    return (
-        <button className={props.type} disabled={props.disabled} onClick={props.click}>
-            {props.children}
-        </button>
-    );
-}
+	return (
+		<StyledButton
+			className={props.type}
+			disabled={props.disabled}
+			onClick={props.click}
+		>
+			{props.children}
+		</StyledButton>
+	);
+};
 
 export default Button;

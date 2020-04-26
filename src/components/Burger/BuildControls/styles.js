@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledBuildControls = styled.section`
-	background: #cf8f2e;
+	background: var(--bg-secondary);
 	display: flex;
 	padding: 0 2rem;
 	align-items: center;
