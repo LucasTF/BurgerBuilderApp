@@ -51,4 +51,9 @@ export const StyledBuildControls = styled.section`
 			}
 		}
 	}
+
+	@media (max-width: 1100px) {
+		padding: 2rem 0;
+		flex-direction: column;
+	}
 `;

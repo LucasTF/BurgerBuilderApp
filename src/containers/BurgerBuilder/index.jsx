@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Burger from '../../components/Burger';
@@ -69,7 +69,7 @@ export class BurgerBuilder extends Component {
 		);
 		if (this.props.ingredients) {
 			burger = (
-				<Fragment>
+				<>
 					<BuildControls
 						ingredientAdded={this.props.onIngredientAdded}
 						removeIngredient={this.props.onIngredientRemoved}
@@ -82,7 +82,7 @@ export class BurgerBuilder extends Component {
 						disabled={disabledInfo}
 					/>
 					<Burger ingredients={this.props.ingredients} />
-				</Fragment>
+				</>
 			);
 			orderSummary = (
 				<OrderSummary
@@ -94,7 +94,7 @@ export class BurgerBuilder extends Component {
 			);
 		}
 		return (
-			<Fragment>
+			<>
 				<Modal
 					show={this.state.purchasing}
 					modalClosed={this.purchaseCancelHandler}
@@ -102,7 +102,7 @@ export class BurgerBuilder extends Component {
 					{orderSummary}
 				</Modal>
 				{burger}
-			</Fragment>
+			</>
 		);
 	}
 }

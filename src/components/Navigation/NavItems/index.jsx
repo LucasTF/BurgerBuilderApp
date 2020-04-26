@@ -30,16 +30,16 @@ const NavItems = ({ isAuth }) => {
 					<span className='link-text'>Contact</span>
 				</NavLink>
 			</li>
-			<li className='nav-item'>
-				{!isAuth ? null : (
+			{!isAuth ? null : (
+				<li className='nav-item'>
 					<NavLink to='/orders'>
 						<div>
 							<FaList />
 						</div>
 						<span className='link-text'>My Orders</span>
 					</NavLink>
-				)}
-			</li>
+				</li>
+			)}
 			<li className='nav-item'>
 				{!isAuth ? (
 					<NavLink to='/auth'>

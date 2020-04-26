@@ -41,4 +41,20 @@ export const StyledNavlist = styled.ul`
 			}
 		}
 	}
+
+	@media (max-width: 1100px) {
+		flex-direction: row;
+
+		li.logo {
+			display: none;
+		}
+
+		li.nav-item {
+			a {
+				span.link-text {
+					margin: 0;
+				}
+			}
+		}
+	}
 `;

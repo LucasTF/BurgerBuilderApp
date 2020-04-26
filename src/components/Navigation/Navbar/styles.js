@@ -16,9 +16,57 @@ export const StyledNavbar = styled.nav`
 					:hover {
 						background: #632f07;
 					}
+					span.link-text {
+						display: block;
+					}
 				}
-				span.link-text {
-					display: block;
+			}
+		}
+	}
+
+	@media (max-width: 1100px) {
+		width: 100vw;
+		height: 5rem;
+		bottom: 0;
+		transition: none;
+
+		ul {
+			li.nav-item {
+				a {
+					span.link-text {
+						display: block;
+					}
+				}
+			}
+		}
+
+		:hover {
+			width: 100vw;
+		}
+	}
+
+	@media (max-width: 700px) {
+		ul {
+			li.nav-item {
+				a {
+					span.link-text {
+						display: none;
+					}
+					div {
+						margin: 0 auto;
+					}
+				}
+			}
+		}
+
+		:hover {
+			ul {
+				li.nav-item {
+					a {
+						span.link-text {
+							display: none;
+						}
+					}
 				}
 			}
 		}

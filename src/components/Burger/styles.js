@@ -21,6 +21,18 @@ export const StyledBurger = styled.section`
 		align-content: center;
 		justify-content: center;
 		flex-direction: column;
-		overflow: auto;
+	}
+
+	@media (max-width: 1300px) {
+		div.container {
+			height: 100%;
+			width: 100%;
+			border-radius: unset;
+			background: #daa972;
+		}
+	}
+
+	@media (max-width: 1100px) {
+		height: 100%;
 	}
 `;
