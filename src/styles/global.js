@@ -9,6 +9,8 @@ export const GlobalStyle = createGlobalStyle`
         --txt-primary: #222;
         --txt-secondary: #f0f0f0;
         font-family: 'Roboto', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
         font-size: 16px;
         background: var(--bg-primary);
     }
