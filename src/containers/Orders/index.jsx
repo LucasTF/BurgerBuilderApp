@@ -6,7 +6,7 @@ import withErrorHandler from '../../utils/withErrorHandler';
 import { fetchOrders } from '../../store/actions/order';
 import Spinner from '../../components/UI/Spinner';
 
-import './Orders.css';
+import { StyledOrders } from './styles';
 
 class Orders extends Component {
 	componentDidMount = () => {
@@ -26,7 +26,7 @@ class Orders extends Component {
 				);
 			});
 		}
-		return <div className='orders'>{orders}</div>;
+		return <StyledOrders>{orders}</StyledOrders>;
 	}
 }
 
