@@ -11,6 +11,9 @@ export const StyledNavbar = styled.nav`
 		width: 16rem;
 
 		ul {
+			li.logo {
+				transform: rotate(-180deg);
+			}
 			li.nav-item {
 				a {
 					:hover {

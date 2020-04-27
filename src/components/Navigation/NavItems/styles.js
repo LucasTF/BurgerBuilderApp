@@ -12,6 +12,8 @@ export const StyledNavlist = styled.ul`
 	li.logo {
 		margin: 1rem auto;
 		height: 2rem;
+		transform: rotate(0deg);
+		transition: 600ms;
 		div {
 			font-size: 2rem;
 			color: #cf8f2e;
