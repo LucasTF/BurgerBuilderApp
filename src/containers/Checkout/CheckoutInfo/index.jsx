@@ -12,7 +12,7 @@ import { purchaseBurger } from '../../../store/actions/order';
 import { updateObject } from '../../../utils/updateObject';
 import { validationHandler } from '../../../utils/validationHandler';
 
-import './CheckoutInfo.css';
+import { StyledCheckout } from './styles';
 
 class CheckoutInfo extends Component {
 	state = {
@@ -176,10 +176,12 @@ class CheckoutInfo extends Component {
 			form = <Spinner />;
 		}
 		return (
-			<div className='checkout-info'>
-				<h4>Enter your information:</h4>
-				{form}
-			</div>
+			<StyledCheckout>
+				<div className='container'>
+					<h4>Enter your information:</h4>
+					{form}
+				</div>
+			</StyledCheckout>
 		);
 	}
 }

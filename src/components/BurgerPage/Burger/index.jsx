@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Ingredient from './Ingredients';
+import Ingredient from '../Ingredients';
 
 import { StyledBurger } from './styles';
 
@@ -17,13 +17,12 @@ const Burger = props => {
 	if (ingredients.length === 0) {
 		ingredients = <p>Please start adding ingredients.</p>;
 	}
+
 	return (
 		<StyledBurger>
-			<div className='container'>
-				<Ingredient type='bread-top' />
-				{ingredients}
-				<Ingredient type='bread-bottom' />
-			</div>
+			<Ingredient type='bread-top' />
+			{ingredients}
+			<Ingredient type='bread-bottom' />
 		</StyledBurger>
 	);
 };

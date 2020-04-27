@@ -5,22 +5,20 @@ import { Redirect } from 'react-router-dom';
 import Summary from '../../components/Order/Summary';
 import CheckoutInfo from './CheckoutInfo';
 
-import './Checkout.css';
-
 const Checkout = props => {
 	let summary = <Redirect to='/' />;
 	if (props.ingredients) {
 		const purchased = props.purchased ? <Redirect to='/' /> : null;
 		summary = (
-			<div className='checkout'>
+			<>
 				{purchased}
-				<Summary ingredients={props.ingredients} />
 				<CheckoutInfo
 					ingredients={props.ingredients}
 					totalPrice={props.totalPrice}
 					{...props}
 				/>
-			</div>
+				<Summary ingredients={props.ingredients} />
+			</>
 		);
 	}
 	return summary;

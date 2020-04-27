@@ -1,17 +1,15 @@
 import React from 'react';
 
-import Burger from '../../Burger';
+import Burger from '../../BurgerPage/Burger';
 
-import './Summary.css';
+import { StyledSummary } from './styles';
 
 const Summary = props => {
 	return (
-		<div className='summary'>
+		<StyledSummary>
 			<h1>Thank you for your order!</h1>
-			<div className='burger'>
-				<Burger ingredients={props.ingredients} />
-			</div>
-		</div>
+			<Burger ingredients={props.ingredients} />
+		</StyledSummary>
 	);
 };
 

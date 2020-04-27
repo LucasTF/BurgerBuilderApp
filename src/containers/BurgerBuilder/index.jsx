@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Burger from '../../components/Burger';
-import BuildControls from '../../components/Burger/BuildControls';
+import BurgerPage from '../../components/BurgerPage';
+import BuildControls from '../../components/BurgerPage/BuildControls';
 import Modal from '../../components/UI/Modal';
-import OrderSummary from '../../components/Burger/OrderSummary';
+import OrderSummary from '../../components/BurgerPage/OrderSummary';
 import Spinner from '../../components/UI/Spinner';
 import withErrorHandler from '../../utils/withErrorHandler';
 import Axios from '../../utils/Axios';
@@ -81,7 +81,7 @@ export class BurgerBuilder extends Component {
 						ordered={this.purchaseHandler}
 						disabled={disabledInfo}
 					/>
-					<Burger ingredients={this.props.ingredients} />
+					<BurgerPage ingredients={this.props.ingredients} />
 				</>
 			);
 			orderSummary = (
