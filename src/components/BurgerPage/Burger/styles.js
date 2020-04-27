@@ -8,6 +8,7 @@ export const StyledBurger = styled.div`
 	margin: auto;
 	padding: 1rem;
 	display: flex;
+	box-shadow: inset -0.5rem 0 #b6875b;
 	align-content: center;
 	justify-content: center;
 	flex-direction: column;

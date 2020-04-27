@@ -38,6 +38,9 @@ export const StyledCheckout = styled.div`
 	@media (max-width: 1100px) {
 		height: 100%;
 		max-width: 100%;
-		overflow: scroll;
+	}
+
+	@media (max-width: 900px) {
+		overflow-y: scroll;
 	}
 `;
