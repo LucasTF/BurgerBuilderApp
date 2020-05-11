@@ -1,4 +1,5 @@
 {
+	"homepage": "https://lucastf.github.io/BurgerBuilderApp",
 	"name": "burger-app",
 	"version": "0.1.0",
 	"private": true,
@@ -31,7 +32,6 @@
 	"eslintConfig": {
 		"extends": "react-app"
 	},
-	"homepage": "https://lucastf.github.io/BurgerBuilderApp/",
 	"browserslist": {
 		"production": [
 			">0.2%",
