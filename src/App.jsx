@@ -18,10 +18,6 @@ const Orders = React.lazy(() => {
 	return import('./containers/Orders');
 });
 
-const Contact = React.lazy(() => {
-	return import('./containers/Checkout/Contact');
-});
-
 const Auth = React.lazy(() => {
 	return import('./containers/Auth');
 });
@@ -33,7 +29,6 @@ const App = props => {
 
 	let routes = (
 		<Switch>
-			<Route path='/contact' render={() => <Contact />} />
 			<Route path='/auth' render={() => <Auth />} />
 			<Route path='/' component={BurgerBuilder} />
 		</Switch>
@@ -41,7 +36,6 @@ const App = props => {
 	if (props.isAuth) {
 		routes = (
 			<Switch>
-				<Route path='/contact' render={() => <Contact />} />
 				<Route path='/checkout' render={() => <Checkout />} />
 				<Route path='/orders' render={() => <Orders />} />
 				<Route path='/logout' component={Logout} />

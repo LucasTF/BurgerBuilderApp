@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaHamburger, FaAngleDoubleRight, FaList } from 'react-icons/fa';
-import { MdEmail } from 'react-icons/md';
 import { FiLogIn, FiLogOut } from 'react-icons/fi';
 
 import { StyledNavlist } from './styles';
@@ -20,14 +19,6 @@ const NavItems = ({ isAuth }) => {
 						<FaHamburger />
 					</div>
 					<span className='link-text'>Builder</span>
-				</NavLink>
-			</li>
-			<li className='nav-item'>
-				<NavLink to='/contact'>
-					<div>
-						<MdEmail />
-					</div>
-					<span className='link-text'>Contact</span>
 				</NavLink>
 			</li>
 			{!isAuth ? null : (
