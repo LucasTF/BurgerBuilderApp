@@ -48,6 +48,25 @@ class Auth extends Component {
 				},
 				touched: false,
 			},
+			confirmPassword: {
+				elementType: 'input',
+				elementConfig: {
+					type: 'password',
+					label: 'Confirm Password:',
+					placeholder: 'Password',
+				},
+				value: '',
+				validation: {
+					required: true,
+					minLength: 6,
+					matches: 'password',
+					invalidMessage:
+						'This field must match the \'Password\' field.',
+					valid: false,
+				},
+				signUpOnly: true,
+				touched: false,
+			},
 		},
 		isSignIn: true,
 	};
@@ -76,7 +95,7 @@ class Auth extends Component {
 						valid: validationHandler(
 							event.target.value,
 							this.state.controls[controlName].validation
-						),
+						) && this.passwordMatchingHandler(event.target.value, this.state.controls[controlName]),
 					}
 				),
 				touched: true,
@@ -84,6 +103,13 @@ class Auth extends Component {
 		});
 		this.setState({ controls: updatedControls });
 	};
+
+	passwordMatchingHandler = (value, input) => {
+		if(input.validation.matches) {
+			return value === this.state.controls[input.validation.matches].value;
+		}
+		return true;
+	}
 
 	submitHandler = event => {
 		event.preventDefault();
@@ -104,6 +130,7 @@ class Auth extends Component {
 		}
 
 		let form = elementsArray.map(element => {
+			if(element.config.signUpOnly && this.state.isSignIn) return null;
 			return (
 				<Input
 					key={element.id}
