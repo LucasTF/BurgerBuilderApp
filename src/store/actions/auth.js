@@ -71,7 +71,7 @@ export const authCheckState = () => {
 	};
 };
 
-export const auth = (email, password, isSignIn) => {
+export const auth = (email, password, confirmPassword, isSignIn) => {
 	return dispatch => {
 		dispatch(authStart());
 		const authData = {
@@ -80,12 +80,17 @@ export const auth = (email, password, isSignIn) => {
 			returnSecureToken: true,
 		};
 		let url;
-		if (isSignIn)
+		if (isSignIn) {
 			url =
 				'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCLBsHPZFCV6SMwkcRZx3Lvqrd-FabNWxU';
-		else
+		} else {
+			if (password !== confirmPassword) {
+				dispatch(authFailed('PASSWORDS_DO_NOT_MATCH'));
+				return;
+			}
 			url =
 				'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCLBsHPZFCV6SMwkcRZx3Lvqrd-FabNWxU';
+		}
 		Axios.post(url, authData)
 			.then(res => {
 				const expirationDate = new Date(

@@ -116,6 +116,7 @@ class Auth extends Component {
 		this.props.onAuth(
 			this.state.controls.email.value,
 			this.state.controls.password.value,
+			this.state.controls.confirmPassword.value,
 			this.state.isSignIn
 		);
 	};
@@ -203,8 +204,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		onAuth: (email, password, isSignIn) =>
-			dispatch(actions.auth(email, password, isSignIn)),
+		onAuth: (email, password, confirmPassword, isSignIn) =>
+			dispatch(actions.auth(email, password, confirmPassword, isSignIn)),
 		onSetAuthRedirect: () => dispatch(actions.setAuthRedirectPath('/')),
 	};
 };
