@@ -7,6 +7,7 @@
 		"@testing-library/react": "^9.4.0",
 		"@testing-library/user-event": "^7.2.1",
 		"axios": "^0.19.2",
+		"gh-pages": "^2.2.0",
 		"prop-types": "^15.7.2",
 		"react": "^16.12.0",
 		"react-dom": "^16.12.0",
@@ -20,6 +21,8 @@
 		"styled-components": "^5.1.0"
 	},
 	"scripts": {
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
@@ -28,6 +31,7 @@
 	"eslintConfig": {
 		"extends": "react-app"
 	},
+	"homepage": "https://LucasTF.github.io/burger-builder-app",
 	"browserslist": {
 		"production": [
 			">0.2%",
