@@ -31,7 +31,7 @@
 	"eslintConfig": {
 		"extends": "react-app"
 	},
-	"homepage": "https://LucasTF.github.io/burger-builder-app",
+	"homepage": "https://lucastf.github.io/BurgerBuilderApp/",
 	"browserslist": {
 		"production": [
 			">0.2%",
