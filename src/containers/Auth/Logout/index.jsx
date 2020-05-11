@@ -11,7 +11,7 @@ class Logout extends Component {
 	}
 
 	render() {
-		return <Redirect to='/' />;
+		return <Redirect to={process.env.PUBLIC_URL + '/'} />;
 	}
 }
 

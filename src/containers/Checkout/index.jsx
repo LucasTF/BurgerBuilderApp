@@ -6,9 +6,9 @@ import Summary from '../../components/Order/Summary';
 import CheckoutInfo from './CheckoutInfo';
 
 const Checkout = props => {
-	let summary = <Redirect to='/' />;
+	let summary = <Redirect to={process.env.PUBLIC_URL + '/'} />;
 	if (props.ingredients) {
-		const purchased = props.purchased ? <Redirect to='/' /> : null;
+		const purchased = props.purchased ? <Redirect to={process.env.PUBLIC_URL + '/'} /> : null;
 		summary = (
 			<>
 				{purchased}
