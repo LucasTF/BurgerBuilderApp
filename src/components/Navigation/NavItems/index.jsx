@@ -14,7 +14,7 @@ const NavItems = ({ isAuth }) => {
 				</div>
 			</li>
 			<li className='nav-item'>
-				<NavLink exact to='/'>
+				<NavLink exact to={process.env.PUBLIC_URL + '/'}>
 					<div>
 						<FaHamburger />
 					</div>
@@ -23,7 +23,7 @@ const NavItems = ({ isAuth }) => {
 			</li>
 			{!isAuth ? null : (
 				<li className='nav-item'>
-					<NavLink to='/orders'>
+					<NavLink to={process.env.PUBLIC_URL + '/orders'}>
 						<div>
 							<FaList />
 						</div>
@@ -33,14 +33,14 @@ const NavItems = ({ isAuth }) => {
 			)}
 			<li className='nav-item'>
 				{!isAuth ? (
-					<NavLink to='/auth'>
+					<NavLink to={process.env.PUBLIC_URL + '/auth'}>
 						<div>
 							<FiLogIn />
 						</div>
 						<span className='link-text'>Login</span>
 					</NavLink>
 				) : (
-					<NavLink to='/logout'>
+					<NavLink to={process.env.PUBLIC_URL + '/logout'}>
 						<div>
 							<FiLogOut />
 						</div>
