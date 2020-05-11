@@ -29,18 +29,18 @@ const App = props => {
 
 	let routes = (
 		<Switch>
-			<Route path='/auth' render={() => <Auth />} />
-			<Route path='/' component={BurgerBuilder} />
+			<Route path={process.env.PUBLIC_URL + '/auth'} render={() => <Auth />} />
+			<Route path={process.env.PUBLIC_URL + '/'} component={BurgerBuilder} />
 		</Switch>
 	);
 	if (props.isAuth) {
 		routes = (
 			<Switch>
-				<Route path='/checkout' render={() => <Checkout />} />
-				<Route path='/orders' render={() => <Orders />} />
-				<Route path='/logout' component={Logout} />
-				<Route path='/auth' render={() => <Auth />} />
-				<Route path='/' component={BurgerBuilder} />
+				<Route path={process.env.PUBLIC_URL + '/checkout'} render={() => <Checkout />} />
+				<Route path={process.env.PUBLIC_URL + '/orders'} render={() => <Orders />} />
+				<Route path={process.env.PUBLIC_URL + '/logout'} component={Logout} />
+				<Route path={process.env.PUBLIC_URL + '/auth'} render={() => <Auth />} />
+				<Route path={process.env.PUBLIC_URL + '/'} component={BurgerBuilder} />
 			</Switch>
 		);
 	}
