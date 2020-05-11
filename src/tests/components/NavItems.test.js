@@ -26,7 +26,11 @@ describe('<NavItems />', () => {
 
 	it('should NOT render a logout <NavLink /> when not authenticated', () => {
 		expect(
-			wrapper.contains(<NavLink to='/logout'>Logout</NavLink>)
+			wrapper.contains(
+				<NavLink to={process.env.PUBLIC_URL + '/logout'}>
+					Logout
+				</NavLink>
+			)
 		).toEqual(false);
 	});
 });

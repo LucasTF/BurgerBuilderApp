@@ -166,7 +166,7 @@ class CheckoutInfo extends Component {
 				</Button>
 				<Button
 					type='danger'
-					click={() => this.props.history.replace('/')}
+					click={() => this.props.history.replace(process.env.PUBLIC_URL + '/')}
 				>
 					Cancel
 				</Button>

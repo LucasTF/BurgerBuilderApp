@@ -8,7 +8,7 @@ describe('Auth Reducer', () => {
 			userId: null,
 			error: null,
 			loading: false,
-			authRedirect: '/',
+			authRedirect: process.env.PUBLIC_URL + '/',
 		});
 	});
 
@@ -20,7 +20,7 @@ describe('Auth Reducer', () => {
 					userId: null,
 					error: null,
 					loading: false,
-					authRedirect: '/',
+					authRedirect: process.env.PUBLIC_URL + '/',
 				},
 				{
 					type: Action.AUTH_SUCCESS,
@@ -33,7 +33,7 @@ describe('Auth Reducer', () => {
 			userId: 'userId',
 			error: null,
 			loading: false,
-			authRedirect: '/',
+			authRedirect: process.env.PUBLIC_URL + '/',
 		});
 	});
 });

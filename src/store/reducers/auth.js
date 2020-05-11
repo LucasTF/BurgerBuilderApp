@@ -6,7 +6,7 @@ const initialState = {
 	userId: null,
 	error: null,
 	loading: false,
-	authRedirect: '/',
+	authRedirect: process.env.PUBLIC_URL + '/',
 };
 
 const authStart = (state, action) => {
