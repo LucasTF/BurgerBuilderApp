@@ -7,6 +7,7 @@ import Modal from '../../components/UI/Modal';
 import OrderSummary from '../../components/BurgerPage/OrderSummary';
 import Spinner from '../../components/UI/Spinner';
 import withErrorHandler from '../../utils/withErrorHandler';
+import * as Routes from '../../utils/routes';
 import Axios from '../../utils/Axios';
 import {
 	addIngredient,
@@ -40,8 +41,8 @@ export class BurgerBuilder extends Component {
 		if (this.props.isAuth) {
 			this.setState({ purchasing: true });
 		} else {
-			this.props.onSetAuthRedirectPath(process.env.PUBLIC_URL + '/checkout');
-			this.props.history.push(process.env.PUBLIC_URL + '/auth');
+			this.props.onSetAuthRedirectPath(Routes.CHECKOUT);
+			this.props.history.push(Routes.AUTH);
 		}
 	};
 
@@ -51,7 +52,7 @@ export class BurgerBuilder extends Component {
 
 	purchaseContinueHandler = () => {
 		this.props.onInitPurchase();
-		this.props.history.push(process.env.PUBLIC_URL + '/checkout');
+		this.props.history.push(Routes.CHECKOUT);
 	};
 
 	render() {

@@ -11,6 +11,7 @@ import { purchaseBurger } from '../../../store/actions/order';
 
 import { updateObject } from '../../../utils/updateObject';
 import { validationHandler } from '../../../utils/validationHandler';
+import * as Routes from '../../../utils/routes';
 
 import { StyledCheckout } from './styles';
 
@@ -166,7 +167,7 @@ class CheckoutInfo extends Component {
 				</Button>
 				<Button
 					type='danger'
-					click={() => this.props.history.replace(process.env.PUBLIC_URL + '/')}
+					click={() => this.props.history.replace(Routes.HOME)}
 				>
 					Cancel
 				</Button>

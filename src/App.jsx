@@ -10,6 +10,8 @@ import Spinner from './components/UI/Spinner';
 import { authCheckState } from './store/actions/auth';
 import { GlobalStyle } from './styles/global';
 
+import * as Routes from './utils/routes';
+
 const Checkout = React.lazy(() => {
 	return import('./containers/Checkout');
 });
@@ -29,18 +31,19 @@ const App = props => {
 
 	let routes = (
 		<Switch>
-			<Route path={process.env.PUBLIC_URL + '/auth'} render={() => <Auth />} />
-			<Route path={process.env.PUBLIC_URL + '/'} component={BurgerBuilder} />
+			<Route path={Routes.AUTH} render={() => <Auth />} />
+			<Route path={Routes.HOME} component={BurgerBuilder} />
 		</Switch>
 	);
 	if (props.isAuth) {
 		routes = (
 			<Switch>
-				<Route path={process.env.PUBLIC_URL + '/checkout'} render={() => <Checkout />} />
-				<Route path={process.env.PUBLIC_URL + '/orders'} render={() => <Orders />} />
-				<Route path={process.env.PUBLIC_URL + '/logout'} component={Logout} />
-				<Route path={process.env.PUBLIC_URL + '/auth'} render={() => <Auth />} />
-				<Route path={process.env.PUBLIC_URL + '/'} component={BurgerBuilder} />
+				<Route path={Routes.CHECKOUT} render={() => <Checkout />} />
+				<Route path={Routes.ORDERS} render={() => <Orders />} />
+				<Route path={Routes.LOGOUT} component={Logout} />
+				<Route path={Routes.AUTH} render={() => <Auth />} />
+				<Route default path={Routes.HOME} component={BurgerBuilder} />
+				<Route component={BurgerBuilder} />
 			</Switch>
 		);
 	}

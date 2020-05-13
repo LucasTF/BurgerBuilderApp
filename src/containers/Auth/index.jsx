@@ -7,6 +7,7 @@ import Button from '../../components/UI/Button';
 import Spinner from '../../components/UI/Spinner';
 
 import * as actions from '../../store/actions/auth';
+import * as Routes from '../../utils/routes';
 
 import { updateObject } from '../../utils/updateObject';
 import { validationHandler } from '../../utils/validationHandler';
@@ -61,7 +62,7 @@ class Auth extends Component {
 					minLength: 6,
 					matches: 'password',
 					invalidMessage:
-						'This field must match the \'Password\' field.',
+						"This field must match the 'Password' field.",
 					valid: false,
 				},
 				signUpOnly: true,
@@ -92,10 +93,15 @@ class Auth extends Component {
 				validation: updateObject(
 					this.state.controls[controlName].validation,
 					{
-						valid: validationHandler(
-							event.target.value,
-							this.state.controls[controlName].validation
-						) && this.passwordMatchingHandler(event.target.value, this.state.controls[controlName]),
+						valid:
+							validationHandler(
+								event.target.value,
+								this.state.controls[controlName].validation
+							) &&
+							this.passwordMatchingHandler(
+								event.target.value,
+								this.state.controls[controlName]
+							),
 					}
 				),
 				touched: true,
@@ -105,11 +111,13 @@ class Auth extends Component {
 	};
 
 	passwordMatchingHandler = (value, input) => {
-		if(input.validation.matches) {
-			return value === this.state.controls[input.validation.matches].value;
+		if (input.validation.matches) {
+			return (
+				value === this.state.controls[input.validation.matches].value
+			);
 		}
 		return true;
-	}
+	};
 
 	submitHandler = event => {
 		event.preventDefault();
@@ -131,7 +139,7 @@ class Auth extends Component {
 		}
 
 		let form = elementsArray.map(element => {
-			if(element.config.signUpOnly && this.state.isSignIn) return null;
+			if (element.config.signUpOnly && this.state.isSignIn) return null;
 			return (
 				<Input
 					key={element.id}
@@ -206,7 +214,8 @@ const mapDispatchToProps = dispatch => {
 	return {
 		onAuth: (email, password, confirmPassword, isSignIn) =>
 			dispatch(actions.auth(email, password, confirmPassword, isSignIn)),
-		onSetAuthRedirect: () => dispatch(actions.setAuthRedirectPath(process.env.PUBLIC_URL + '/')),
+		onSetAuthRedirect: () =>
+			dispatch(actions.setAuthRedirectPath(Routes.HOME)),
 	};
 };
 

@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { FaHamburger, FaAngleDoubleRight, FaList } from 'react-icons/fa';
 import { FiLogIn, FiLogOut } from 'react-icons/fi';
 
+import * as Routes from '../../../utils/routes';
+
 import { StyledNavlist } from './styles';
 
 const NavItems = ({ isAuth }) => {
@@ -14,7 +16,7 @@ const NavItems = ({ isAuth }) => {
 				</div>
 			</li>
 			<li className='nav-item'>
-				<NavLink exact to={process.env.PUBLIC_URL + '/'}>
+				<NavLink exact to={Routes.HOME}>
 					<div>
 						<FaHamburger />
 					</div>
@@ -23,7 +25,7 @@ const NavItems = ({ isAuth }) => {
 			</li>
 			{!isAuth ? null : (
 				<li className='nav-item'>
-					<NavLink to={process.env.PUBLIC_URL + '/orders'}>
+					<NavLink to={Routes.ORDERS}>
 						<div>
 							<FaList />
 						</div>
@@ -33,14 +35,14 @@ const NavItems = ({ isAuth }) => {
 			)}
 			<li className='nav-item'>
 				{!isAuth ? (
-					<NavLink to={process.env.PUBLIC_URL + '/auth'}>
+					<NavLink to={Routes.AUTH}>
 						<div>
 							<FiLogIn />
 						</div>
 						<span className='link-text'>Login</span>
 					</NavLink>
 				) : (
-					<NavLink to={process.env.PUBLIC_URL + '/logout'}>
+					<NavLink to={Routes.LOGOUT}>
 						<div>
 							<FiLogOut />
 						</div>

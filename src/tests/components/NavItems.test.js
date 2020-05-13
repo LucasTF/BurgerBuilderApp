@@ -6,6 +6,8 @@ import Adapter from 'enzyme-adapter-react-16';
 import NavItems from '../../components/Navigation/NavItems';
 import { NavLink } from 'react-router-dom';
 
+import * as Routes from '../../utils/routes';
+
 configure({ adapter: new Adapter() });
 
 describe('<NavItems />', () => {
@@ -26,11 +28,7 @@ describe('<NavItems />', () => {
 
 	it('should NOT render a logout <NavLink /> when not authenticated', () => {
 		expect(
-			wrapper.contains(
-				<NavLink to={process.env.PUBLIC_URL + '/logout'}>
-					Logout
-				</NavLink>
-			)
+			wrapper.contains(<NavLink to={Routes.LOGOUT}>Logout</NavLink>)
 		).toEqual(false);
 	});
 });

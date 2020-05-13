@@ -1,5 +1,6 @@
 import reducer from '../../store/reducers/auth';
 import * as Action from '../../store/actions/actionTypes';
+import * as Routes from '../../utils/routes';
 
 describe('Auth Reducer', () => {
 	it('should return the initial state', () => {
@@ -8,7 +9,7 @@ describe('Auth Reducer', () => {
 			userId: null,
 			error: null,
 			loading: false,
-			authRedirect: process.env.PUBLIC_URL + '/',
+			authRedirect: Routes.HOME,
 		});
 	});
 
@@ -20,7 +21,7 @@ describe('Auth Reducer', () => {
 					userId: null,
 					error: null,
 					loading: false,
-					authRedirect: process.env.PUBLIC_URL + '/',
+					authRedirect: Routes.HOME,
 				},
 				{
 					type: Action.AUTH_SUCCESS,
@@ -33,7 +34,7 @@ describe('Auth Reducer', () => {
 			userId: 'userId',
 			error: null,
 			loading: false,
-			authRedirect: process.env.PUBLIC_URL + '/',
+			authRedirect: Routes.HOME,
 		});
 	});
 });

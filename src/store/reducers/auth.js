@@ -1,4 +1,5 @@
 import * as Action from '../actions/actionTypes';
+import * as Routes from '../../utils/routes';
 import { updateObject } from '../../utils/updateObject';
 
 const initialState = {
@@ -6,7 +7,7 @@ const initialState = {
 	userId: null,
 	error: null,
 	loading: false,
-	authRedirect: process.env.PUBLIC_URL + '/',
+	authRedirect: Routes.HOME,
 };
 
 const authStart = (state, action) => {

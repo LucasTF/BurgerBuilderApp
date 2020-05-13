@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import * as Action from '../../../store/actions/actionTypes';
+import * as Routes from '../../../utils/routes';
 import { logout } from '../../../store/actions/auth';
 
 class Logout extends Component {
@@ -11,7 +12,7 @@ class Logout extends Component {
 	}
 
 	render() {
-		return <Redirect to={process.env.PUBLIC_URL + '/'} />;
+		return <Redirect to={Routes.HOME} />;
 	}
 }
 
