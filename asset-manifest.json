@@ -1,28 +1,28 @@
 {
   "files": {
     "main.css": "/BurgerBuilderApp/static/css/main.52a000df.chunk.css",
-    "main.js": "/BurgerBuilderApp/static/js/main.210da93c.chunk.js",
-    "main.js.map": "/BurgerBuilderApp/static/js/main.210da93c.chunk.js.map",
-    "runtime-main.js": "/BurgerBuilderApp/static/js/runtime-main.d07b8e4f.js",
-    "runtime-main.js.map": "/BurgerBuilderApp/static/js/runtime-main.d07b8e4f.js.map",
-    "static/js/2.b96553e4.chunk.js": "/BurgerBuilderApp/static/js/2.b96553e4.chunk.js",
-    "static/js/2.b96553e4.chunk.js.map": "/BurgerBuilderApp/static/js/2.b96553e4.chunk.js.map",
-    "static/js/3.3ceb9427.chunk.js": "/BurgerBuilderApp/static/js/3.3ceb9427.chunk.js",
-    "static/js/3.3ceb9427.chunk.js.map": "/BurgerBuilderApp/static/js/3.3ceb9427.chunk.js.map",
-    "static/js/4.9f504850.chunk.js": "/BurgerBuilderApp/static/js/4.9f504850.chunk.js",
-    "static/js/4.9f504850.chunk.js.map": "/BurgerBuilderApp/static/js/4.9f504850.chunk.js.map",
-    "static/js/5.7458fbd3.chunk.js": "/BurgerBuilderApp/static/js/5.7458fbd3.chunk.js",
-    "static/js/5.7458fbd3.chunk.js.map": "/BurgerBuilderApp/static/js/5.7458fbd3.chunk.js.map",
+    "main.js": "/BurgerBuilderApp/static/js/main.8b9310f8.chunk.js",
+    "main.js.map": "/BurgerBuilderApp/static/js/main.8b9310f8.chunk.js.map",
+    "runtime-main.js": "/BurgerBuilderApp/static/js/runtime-main.2796fe89.js",
+    "runtime-main.js.map": "/BurgerBuilderApp/static/js/runtime-main.2796fe89.js.map",
+    "static/js/2.a3da349c.chunk.js": "/BurgerBuilderApp/static/js/2.a3da349c.chunk.js",
+    "static/js/2.a3da349c.chunk.js.map": "/BurgerBuilderApp/static/js/2.a3da349c.chunk.js.map",
+    "static/js/3.e37ce739.chunk.js": "/BurgerBuilderApp/static/js/3.e37ce739.chunk.js",
+    "static/js/3.e37ce739.chunk.js.map": "/BurgerBuilderApp/static/js/3.e37ce739.chunk.js.map",
+    "static/js/4.96b75f9c.chunk.js": "/BurgerBuilderApp/static/js/4.96b75f9c.chunk.js",
+    "static/js/4.96b75f9c.chunk.js.map": "/BurgerBuilderApp/static/js/4.96b75f9c.chunk.js.map",
+    "static/js/5.3509609c.chunk.js": "/BurgerBuilderApp/static/js/5.3509609c.chunk.js",
+    "static/js/5.3509609c.chunk.js.map": "/BurgerBuilderApp/static/js/5.3509609c.chunk.js.map",
     "index.html": "/BurgerBuilderApp/index.html",
-    "precache-manifest.12580c354d110325dd5e83e205f00223.js": "/BurgerBuilderApp/precache-manifest.12580c354d110325dd5e83e205f00223.js",
+    "precache-manifest.21d99aaf494bd44151bb233fdca59506.js": "/BurgerBuilderApp/precache-manifest.21d99aaf494bd44151bb233fdca59506.js",
     "service-worker.js": "/BurgerBuilderApp/service-worker.js",
     "static/css/main.52a000df.chunk.css.map": "/BurgerBuilderApp/static/css/main.52a000df.chunk.css.map",
-    "static/js/2.b96553e4.chunk.js.LICENSE": "/BurgerBuilderApp/static/js/2.b96553e4.chunk.js.LICENSE"
+    "static/js/2.a3da349c.chunk.js.LICENSE": "/BurgerBuilderApp/static/js/2.a3da349c.chunk.js.LICENSE"
   },
   "entrypoints": [
-    "static/js/runtime-main.d07b8e4f.js",
-    "static/js/2.b96553e4.chunk.js",
+    "static/js/runtime-main.2796fe89.js",
+    "static/js/2.a3da349c.chunk.js",
     "static/css/main.52a000df.chunk.css",
-    "static/js/main.210da93c.chunk.js"
+    "static/js/main.8b9310f8.chunk.js"
   ]
 }
