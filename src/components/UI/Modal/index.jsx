@@ -1,30 +1,21 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import Backdrop from '../Backdrop';
 
 import './Modal.css';
 
-class Modal extends Component {
-	shouldComponentUpdate(nextProps, nextState) {
+const Modal = React.memo(
+	props => {
+		let style = props.show ? 'modal purchase-true' : 'modal purchase-false';
 		return (
-			nextProps.show !== this.props.show ||
-			nextProps.children !== this.props.children
+			<>
+				<Backdrop show={props.show} clicked={props.modalClosed} />
+				<div className={style}>{props.children}</div>
+			</>
 		);
-	}
-
-	render() {
-		let style = this.props.show
-			? 'modal purchase-true'
-			: 'modal purchase-false';
-		return (
-			<Fragment>
-				<Backdrop
-					show={this.props.show}
-					clicked={this.props.modalClosed}
-				/>
-				<div className={style}>{this.props.children}</div>
-			</Fragment>
-		);
-	}
-}
+	},
+	(prevProps, currentProps) =>
+		prevProps.show === currentProps.show ||
+		prevProps.children === currentProps.children
+);
 
 export default Modal;
