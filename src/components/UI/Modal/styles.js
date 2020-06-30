@@ -4,13 +4,12 @@ const StyledModal = styled.div`
 	position: fixed;
 	z-index: 500;
 	background-color: #f2f2f2;
-	width: 30%;
-	top: 30%;
+	width: 100%;
 	border-radius: 12px;
 	transition: all 0.3s ease-out;
 
 	&.purchase-true {
-		transform: translate(100%, 0);
+		transform: translate(0, 0);
 		opacity: 1;
 	}
 
@@ -32,11 +31,10 @@ const StyledModal = styled.div`
 		padding: 1rem;
 	}
 
-	@media (min-width: 600px) {
-		.modal {
-			width: 500px;
-			left: calc(50% - 250px);
-		}
+	@media (min-width: 1000px) {
+		width: 500px;
+		right: 30%;
+		bottom: 30%;
 	}
 `;
 
