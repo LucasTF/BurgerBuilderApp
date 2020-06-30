@@ -104,7 +104,11 @@ export const BurgerBuilder = props => {
 
 	return (
 		<>
-			<Modal show={purchasing} modalClosed={purchaseCancelHandler}>
+			<Modal
+				title='Your Order'
+				show={purchasing}
+				modalClosed={purchaseCancelHandler}
+			>
 				{orderSummary}
 			</Modal>
 			{burger}

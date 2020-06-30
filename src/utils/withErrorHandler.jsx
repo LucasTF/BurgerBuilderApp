@@ -10,7 +10,11 @@ const withErrorHandler = (WrappedComponent, axios) => {
 
 		return (
 			<>
-				<Modal show={error} modalClosed={errorConfirmedHandler}>
+				<Modal
+					title='Error!'
+					show={error}
+					modalClosed={errorConfirmedHandler}
+				>
 					{error && 'Somethin went wrong!'}
 				</Modal>
 				<WrappedComponent {...props} />

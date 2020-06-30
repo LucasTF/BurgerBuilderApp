@@ -1,15 +1,21 @@
 import React from 'react';
 import Backdrop from '../Backdrop';
 
-import './Modal.css';
+import StyledModal from './styles';
 
 const Modal = React.memo(
 	props => {
-		let style = props.show ? 'modal purchase-true' : 'modal purchase-false';
 		return (
 			<>
 				<Backdrop show={props.show} clicked={props.modalClosed} />
-				<div className={style}>{props.children}</div>
+				<StyledModal
+					className={props.show ? 'purchase-true' : 'purchase-false'}
+				>
+					<div className='title'>
+						<p>{props.title}</p>
+					</div>
+					<div className='content'>{props.children}</div>
+				</StyledModal>
 			</>
 		);
 	},

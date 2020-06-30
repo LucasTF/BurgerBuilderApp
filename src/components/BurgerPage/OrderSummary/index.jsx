@@ -16,7 +16,6 @@ const OrderSummary = props => {
 
 	return (
 		<>
-			<h3>Your Order</h3>
 			<ul>{ingredientSummary}</ul>
 			<p>
 				Total Price: <strong>${props.totalPrice.toFixed(2)}</strong>
