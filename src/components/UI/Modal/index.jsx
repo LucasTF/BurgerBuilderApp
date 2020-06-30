@@ -14,7 +14,7 @@ const Modal = React.memo(
 		);
 	},
 	(prevProps, currentProps) =>
-		prevProps.show === currentProps.show ||
+		prevProps.show === currentProps.show &&
 		prevProps.children === currentProps.children
 );
 
