@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import Summary from '../../components/Order/Summary';
@@ -8,32 +8,26 @@ import CheckoutInfo from './CheckoutInfo';
 import * as Routes from '../../utils/routes';
 
 const Checkout = props => {
+	const ingredients = useSelector(state => state.burgerBuilder.ingredients);
+	const totalPrice = useSelector(state => state.burgerBuilder.totalPrice);
+	const purchased = useSelector(state => state.order.purchased);
+
 	let summary = <Redirect to={Routes.HOME} />;
-	if (props.ingredients) {
-		const purchased = props.purchased ? (
-			<Redirect to={Routes.HOME} />
-		) : null;
+	if (ingredients) {
+		const purchasedView = purchased && <Redirect to={Routes.HOME} />;
 		summary = (
 			<>
-				{purchased}
+				{purchasedView}
 				<CheckoutInfo
-					ingredients={props.ingredients}
-					totalPrice={props.totalPrice}
+					ingredients={ingredients}
+					totalPrice={totalPrice}
 					{...props}
 				/>
-				<Summary ingredients={props.ingredients} />
+				<Summary ingredients={ingredients} />
 			</>
 		);
 	}
 	return summary;
 };
 
-const mapStateToProps = state => {
-	return {
-		ingredients: state.burgerBuilder.ingredients,
-		totalPrice: state.burgerBuilder.totalPrice,
-		purchased: state.order.purchased,
-	};
-};
-
-export default connect(mapStateToProps)(Checkout);
+export default Checkout;

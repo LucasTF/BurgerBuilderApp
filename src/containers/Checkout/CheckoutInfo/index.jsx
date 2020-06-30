@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../../../components/UI/Button';
 import Spinner from '../../../components/UI/Spinner';
@@ -83,6 +83,17 @@ const CheckoutInfo = props => {
 	});
 	const [isFormValid, setIsFormValid] = useState(false);
 
+	const ingredients = useSelector(state => state.burgerBuilder.ingredients);
+	const totalPrice = useSelector(state => state.burgerBuilder.totalPrice);
+	const loading = useSelector(state => state.order.loading);
+	const token = useSelector(state => state.auth.token);
+	const userId = useSelector(state => state.auth.userId);
+
+	const dispatch = useDispatch();
+
+	const onOrderBurger = (orderData, token) =>
+		dispatch(purchaseBurger(orderData, token));
+
 	const orderHandler = event => {
 		event.preventDefault();
 		const formData = {};
@@ -90,13 +101,13 @@ const CheckoutInfo = props => {
 			formData[formElement] = orderForm[formElement].value;
 		}
 		const order = {
-			ingredients: props.ingredients,
-			price: props.totalPrice,
+			ingredients: ingredients,
+			price: totalPrice,
 			orderData: formData,
-			userId: props.userId,
+			userId: userId,
 		};
 
-		props.onOrderBurger(order, props.token);
+		onOrderBurger(order, token);
 	};
 
 	const inputChangedHandler = (event, id) => {
@@ -162,9 +173,7 @@ const CheckoutInfo = props => {
 		</form>
 	);
 
-	if (props.loading) {
-		form = <Spinner />;
-	}
+	if (loading) form = <Spinner />;
 
 	return (
 		<StyledCheckout>
@@ -176,24 +185,4 @@ const CheckoutInfo = props => {
 	);
 };
 
-const mapStateToProps = state => {
-	return {
-		ingredients: state.burgerBuilder.ingredients,
-		totalPrice: state.burgerBuilder.totalPrice,
-		loading: state.order.loading,
-		token: state.auth.token,
-		userId: state.auth.userId,
-	};
-};
-
-const mapDispatchToProps = dispatch => {
-	return {
-		onOrderBurger: (orderData, token) =>
-			dispatch(purchaseBurger(orderData, token)),
-	};
-};
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(withErrorHandler(CheckoutInfo, Axios));
+export default withErrorHandler(CheckoutInfo, Axios);

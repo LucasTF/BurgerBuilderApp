@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Order from '../../components/Order';
 import Axios from '../../utils/Axios';
 import withErrorHandler from '../../utils/withErrorHandler';
@@ -8,7 +8,19 @@ import Spinner from '../../components/UI/Spinner';
 
 import { StyledOrders } from './styles';
 
-const Orders = ({ orders, loading, onFetchOrders, token, userId }) => {
+const Orders = () => {
+	const orders = useSelector(state => state.order.orders);
+	const loading = useSelector(state => state.order.loading);
+	const token = useSelector(state => state.auth.token);
+	const userId = useSelector(state => state.auth.userId);
+
+	const dispatch = useDispatch();
+
+	const onFetchOrders = useCallback(
+		(token, userId) => dispatch(fetchOrders(token, userId)),
+		[dispatch]
+	);
+
 	useEffect(() => {
 		onFetchOrders(token, userId);
 	}, [onFetchOrders, token, userId]);
@@ -30,22 +42,4 @@ const Orders = ({ orders, loading, onFetchOrders, token, userId }) => {
 	return <StyledOrders>{ordersView}</StyledOrders>;
 };
 
-const mapStateToProps = state => {
-	return {
-		orders: state.order.orders,
-		loading: state.order.loading,
-		token: state.auth.token,
-		userId: state.auth.userId,
-	};
-};
-
-const mapDispatchToProps = dispatch => {
-	return {
-		onFetchOrders: (token, userId) => dispatch(fetchOrders(token, userId)),
-	};
-};
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(withErrorHandler(Orders, Axios));
+export default withErrorHandler(Orders, Axios);

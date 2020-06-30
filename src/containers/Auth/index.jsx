@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import Input from '../../components/UI/Input';
@@ -14,7 +14,7 @@ import { validationHandler } from '../../utils/validationHandler';
 
 import { StyledAuth } from './styles';
 
-const Auth = ({ building, authRedirect, onSetAuthRedirect, ...props }) => {
+const Auth = () => {
 	const [controls, setControls] = useState({
 		email: {
 			elementType: 'input',
@@ -70,6 +70,21 @@ const Auth = ({ building, authRedirect, onSetAuthRedirect, ...props }) => {
 
 	const [isSignIn, setIsSignIn] = useState(true);
 
+	const dispatch = useDispatch();
+
+	const onAuth = (email, password, confirmPassword, isSignIn) =>
+		dispatch(actions.auth(email, password, confirmPassword, isSignIn));
+	const onSetAuthRedirect = useCallback(
+		() => dispatch(actions.setAuthRedirectPath(Routes.HOME)),
+		[dispatch]
+	);
+
+	const loading = useSelector(state => state.auth.loading);
+	const error = useSelector(state => state.auth.error);
+	const isAuth = useSelector(state => state.auth.token !== null);
+	const building = useSelector(state => state.burgerBuilder.bulding);
+	const authRedirect = useSelector(state => state.auth.authRedirect);
+
 	useEffect(() => {
 		if (building && authRedirect !== '/') onSetAuthRedirect();
 	}, [building, authRedirect, onSetAuthRedirect]);
@@ -108,7 +123,7 @@ const Auth = ({ building, authRedirect, onSetAuthRedirect, ...props }) => {
 
 	const submitHandler = event => {
 		event.preventDefault();
-		props.onAuth(
+		onAuth(
 			controls.email.value,
 			controls.password.value,
 			controls.confirmPassword.value,
@@ -144,18 +159,18 @@ const Auth = ({ building, authRedirect, onSetAuthRedirect, ...props }) => {
 		);
 	});
 
-	if (props.loading) form = <Spinner />;
+	if (loading) form = <Spinner />;
 
 	let errorMessage = null;
-	if (props.error) errorMessage = <p className='error-msg'>{props.error}</p>;
+	if (error) errorMessage = <p className='error-msg'>{error}</p>;
 
 	let authRedirectView = null;
-	if (props.isAuth) authRedirectView = <Redirect to={authRedirect} />;
+	if (isAuth) authRedirectView = <Redirect to={authRedirect} />;
 
 	return (
 		<StyledAuth>
 			<div className='container'>
-				{props.loading ? (
+				{loading ? (
 					form
 				) : (
 					<>
@@ -177,23 +192,4 @@ const Auth = ({ building, authRedirect, onSetAuthRedirect, ...props }) => {
 	);
 };
 
-const mapStateToProps = state => {
-	return {
-		loading: state.auth.loading,
-		error: state.auth.error,
-		isAuth: state.auth.token !== null,
-		building: state.burgerBuilder.bulding,
-		authRedirect: state.auth.authRedirect,
-	};
-};
-
-const mapDispatchToProps = dispatch => {
-	return {
-		onAuth: (email, password, confirmPassword, isSignIn) =>
-			dispatch(actions.auth(email, password, confirmPassword, isSignIn)),
-		onSetAuthRedirect: () =>
-			dispatch(actions.setAuthRedirectPath(Routes.HOME)),
-	};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default Auth;
